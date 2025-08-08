@@ -455,6 +455,36 @@
             background: var(--secondary-color);
             transform: translateY(-5px);
         }
+
+        .animation-button {
+    margin: 15px 10px;
+    display: inline-block;
+        }
+
+        .animation-button a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .animation-button a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+        }
+
+        .animation-button i {
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
@@ -594,7 +624,7 @@
                 <span class="card-icon">📚</span>
                 <h3>Animations Extérieures</h3>
                 <p><strong>Partenariats locaux</strong><br>
-                3-4 soirées annuelles à la Bibliothèque de Lamastre</p>
+                3-4 soirées annuelles à la Bibliothèque de Lamastre (parmi d'autres)</p>
                 <div class="animation-button">
                     <a href="presse.html">
                         <i class="fas fa-newspaper"></i>
