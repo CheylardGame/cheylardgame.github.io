@@ -141,6 +141,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            position: relative;
         }
         
         .event-image img {
@@ -152,6 +153,80 @@
         
         .event-image:hover img {
             transform: scale(1.05);
+        }
+
+        .event-image {
+            cursor: pointer;
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+        
+        .lightbox-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1001;
+        }
+        
+        .close:hover {
+            color: #ccc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Indication visuelle que l'image est cliquable */
+        .event-image::after {
+            content: '🔍';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 8px;
+            border-radius: 50%;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .event-image:hover::after {
+            opacity: 1;
         }
         
         .event-card {
@@ -258,7 +333,7 @@
         <div class="section">
             <div class="event-grid">
                 <div class="event-item">
-                    <div class="event-image">
+                    <div class="event-image" onclick="openLightbox('presse/Affiche Soirée Jeux de Société 040oct.2025jpg.jpg', 'Affiche Soirée Jeux Lamastre 4oct25')">
                         <img src="presse/Affiche Soirée Jeux de Société 040oct.2025jpg.jpg" alt="Affiche Soirée Jeux Lamastre 4oct25">
                     </div>
                     <div class="event-card">
@@ -269,7 +344,7 @@
                 </div>
                 
                 <div class="event-item">
-                    <div class="event-image">
+                    <div class="event-image" onclick="openLightbox('presse/Affiche fete place aux jeux 2025.jpg', 'Affiche Fête place aux jeux 2025')">
                         <img src="presse/Affiche fete place aux jeux 2025.jpg" alt="Affiche Fête place aux jeux 2025">
                     </div>
                     <div class="event-card">
@@ -442,6 +517,106 @@
                         <div class="event-date">26 Janvier 2023</div>
                         <div class="event-title">Hebdo de l’Ardèche</div>
                         <div class="event-location">📍 La Maison de Pays, Le Cheylard 07160</div>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-image">
+                        <img src="presse/Soirée jeux 05-11.jpg" alt="Affiche Soirée Jeux Lamastre 5nov22">
+                    </div>
+                    <div class="event-image">
+                        <img src="presse/article journal lamastre nov 2022.jpg" alt="Article Soirée Jeux Lamastre 5nov22">
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">5 Novembre 2022</div>
+                        <div class="event-title">Animation Soirée jeux</div>
+                        <div class="event-location">📍 Bibliothèque municipale de Lamastre 07270</div>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-image">
+                        <img src="presse/Affiche Fete place aux jeux 2022 HD.jpg" alt="Affiche Fête place aux jeux 2022">
+                    </div>
+                    <div class="event-image">
+                        <img src="presse/298801628_754550275957396_868911780293175469_n.jpg" alt="Article Fête place aux jeux 2022">
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">30 Juillet 2022</div>
+                        <div class="event-title">Organisation et Animation : Fête place aux Jeux</div>
+                        <div class="event-description">
+                            En collaboration avec la Mairie de LE CHEYLARD, les jeux du K’dor et la ludothèque Amstramgram
+                        </div>
+                        <div class="event-location">📍 Place Saléon Terras, Le Cheylard 07160</div>
+                    </div> 
+                </div>
+
+                <div class="event-item">
+                    <div class="event-image">
+                        <img src="presse/Soirée-jeux-14-05-22.jpg" alt="Affiche Soirée Jeux Lamastre 14mai22">
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">14 Mai 2022</div>
+                        <div class="event-title">Animation Soirée jeux</div>
+                        <div class="event-location">📍 Bibliothèque municipale de Lamastre 07270</div>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-image">
+                        <img src="presse/Affiche finale.png" alt="Affiche Soirée Jeux Lamastre 22jan22">
+                    </div>
+                    <div class="event-image">
+                        <img src="presse/nuit de la lecture.jpg" alt="Article Soirée Jeux Lamastre 22jan22">
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">22 Janvier 2022</div>
+                        <div class="event-title">Animation Soirée jeux</div>
+                        <div class="event-location">📍 Bibliothèque municipale de Lamastre 07270</div>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-image">
+                        <img src="presse/hebdo 29 octobre 2022 entete.jpg" alt="Article1 oct22">
+                    </div>
+                    <div class="event-image">
+                        <img src="presse/hebdo 29 octobre 2022.jpg" alt="Article2 oct22">
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">29 Octobre 2022</div>
+                        <div class="event-title">Hebdo de l’Ardèche</div>
+                        <div class="event-location">📍 La Maison de Pays, Le Cheylard 07160</div>
+                    </div>
+                </div>
+                    <div class="event-item">
+                    <div class="event-image">
+                        <img src="presse/11770.jpg" alt="Article3 oct22">
+                    </div>
+                    <div class="event-image">
+                        <img src="presse/Sans titre.jpg" alt="Article4 oct22">
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-image">
+                        <img src="presse/hebdo ardeche septembre 2021.jpg" alt="Article sept21">
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">4 Septembre 2021</div>
+                        <div class="event-title">Forum des Associations</div>
+                        <div class="event-location">📍 Salle de la Palisse, Le Cheylard 07160</div>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-image">
+                        <img src="presse/affiche quai halte ete 2021.jpg" alt="Affiche Soirée Jeux Lamastre 11août21">
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">11 Août 2021</div>
+                        <div class="event-title">Animation Soirée jeux</div>
+                        <div class="event-location">📍 Quai des Haltes à Chalencon 07240</div>
                     </div>
                 </div>
             </div>
