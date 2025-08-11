@@ -629,4 +629,40 @@
         <p><a href="index.html" style="color: var(--secondary-color);">← Retour à l'accueil</a></p>
     </footer>
 </body>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(src, alt) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightbox.style.display = 'block';
+            
+            // Empêcher le scroll de la page en arrière-plan
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            
+            // Rétablir le scroll de la page
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fermer la lightbox avec la touche Échap
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 </html>
