@@ -170,15 +170,17 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
             animation: fadeIn 0.3s;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
         }
         
         .lightbox-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
+            position: relative;
+            margin: 0 auto;
+            max-width: 95%;
+            max-height: none;
+            display: block;
             border-radius: 10px;
             box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
         }
@@ -187,10 +189,12 @@
             width: 100%;
             height: auto;
             border-radius: 10px;
+            display: block;
+            max-width: none;
         }
         
         .close {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 35px;
             color: #fff;
@@ -199,6 +203,14 @@
             cursor: pointer;
             transition: 0.3s;
             z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
         }
         
         .close:hover {
@@ -761,17 +773,24 @@
     </footer>
 
     <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <div class="lightbox-content">
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="close" onclick="closeLightbox(event)">&times;</span>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
             <img id="lightbox-img" src="" alt="">
         </div>
     </div>
 
     <script>
         function openLightbox(src, alt) {
+            console.log('Ouverture lightbox:', src); // Debug
+            
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
+            
+            if (!lightbox) {
+                console.error('Élément lightbox non trouvé');
+                return;
+            }
             
             lightboxImg.src = src;
             lightboxImg.alt = alt;
@@ -779,6 +798,8 @@
             
             // Empêcher le scroll de la page en arrière-plan
             document.body.style.overflow = 'hidden';
+            
+            console.log('Lightbox ouverte'); // Debug
         }
 
         function closeLightbox() {
@@ -787,6 +808,8 @@
             
             // Rétablir le scroll de la page
             document.body.style.overflow = 'auto';
+            
+            console.log('Lightbox fermée'); // Debug
         }
 
         // Fermer la lightbox avec la touche Échap
