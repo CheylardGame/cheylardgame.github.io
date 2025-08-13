@@ -279,6 +279,11 @@
             font-size: 1.5rem;
         }
 
+        .card ul {
+            display: flex; 
+            justify-content: space-around;
+        }
+
         /* Stats Section */
         .stats {
             background: var(--light-color);
@@ -476,7 +481,14 @@
                 line-height: 1.2;
             }
         }
-
+        
+        @media (max-width: 500px) {
+            .card ul {
+                display: block; 
+                justify-content: initial;
+            }
+        }
+        
         /* Corrections spécifiques pour les très petits écrans */
         @media (max-width: 400px) {
             .stats {
@@ -684,7 +696,7 @@
                 Notre ludothèque s'enrichit constamment avec les dernières sorties. 
                 Découvrez un aperçu de nos jeux récents qui raviront tous les types de joueurs !
             </p>
-            <ul style="color: var(--dark-color); line-height: 1.8; display: flex; justify-content: space-around;">
+            <ul style="color: var(--dark-color); line-height: 1.8;">
                 <li>🎯 <strong>Jeux de stratégie</strong></li>
                 <li>🎭 <strong>Jeux narratifs</strong></li>
                 <li>🎪 <strong>Jeux d'ambiance</strong></li>
