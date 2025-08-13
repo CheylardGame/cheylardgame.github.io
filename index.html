@@ -382,10 +382,36 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: fixed;
+                top: 70px; /* Ajustez selon la hauteur de votre header */
+                left: 0;
+                right: 0;
+                background: var(--gradient-bg);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 999;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex !important;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+                border-radius: 25px;
+                display: block;
             }
 
             .mobile-menu {
                 display: flex;
+                z-index : 1001;
             }
 
             .hero h1 {
@@ -404,8 +430,96 @@
                 grid-template-columns: 1fr;
             }
 
+            /* Animation du menu burger */
+            .mobile-menu.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            /* Corrections pour les stats en mobile */
+            .stats {
+                background: var(--light-color);
+                padding: 2rem 1rem; /* Réduction du padding */
+                margin: 2rem 0;
+                border-radius: 20px;
+            }
+
             .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr 1fr; /* Force 2 colonnes sur mobile */
+                gap: 1rem; /* Réduction de l'espace */
+            }
+
+            .stat-item {
+                padding: 1rem 0.5rem; /* Réduction du padding */
+            }
+
+            .stat-number {
+                font-size: 2rem; /* Réduction de la taille */
+                font-weight: bold;
+                color: var(--primary-color);
+                display: block;
+                margin-bottom: 0.5rem;
+                word-break: break-all; /* Évite les débordements */
+            }
+
+            .stat-label {
+                font-size: 0.9rem; /* Réduction de la taille */
+                color: var(--dark-color);
+                font-weight: 500;
+                line-height: 1.2;
+            }
+        }
+
+        /* Corrections spécifiques pour les très petits écrans */
+        @media (max-width: 400px) {
+            .stats {
+                padding: 1.5rem 0.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .stats-grid {
+                gap: 0.5rem;
+            }
+
+            .stat-item {
+                padding: 0.8rem 0.3rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            /* Ajustements généraux pour très petits écrans */
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
             }
         }
 
@@ -767,7 +881,8 @@
                 <br><strong>Réponse sous 48h</strong></p>
             </div>
         </div>
-
+    </section>
+    
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -860,33 +975,30 @@
             observer.observe(el);
         });
 
-        // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject') || 'Contact depuis le site';
-            const message = formData.get('message');
-            
-            // Create mailto link
-            const mailto = `mailto:cheylardgame@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-            
-            // Open email client
-            window.location.href = mailto;
-            
-            // Show confirmation
-            alert('Votre client email va s\'ouvrir avec le message pré-rempli. Merci !');
-        });
-
         // Mobile menu functionality
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
         mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            // Toggle des classes
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Fermer le menu quand on clique en dehors
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
         });
 
         // Stats animation
@@ -965,3 +1077,6 @@
             }
         `;
         document.head.appendChild(style);
+    </script>
+</body>
+</html>
