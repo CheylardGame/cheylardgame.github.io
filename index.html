@@ -405,16 +405,41 @@
             border-radius: 15px;
             box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
-            height: 120px;
+            height: 140px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             color: var(--primary-color);
+            text-align: center;
         }
 
         .partner-logo:hover {
             transform: scale(1.05);
+        }
+
+        .partner-logo img {
+            max-width: 80px;
+            max-height: 60px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .partner-logo .partner-name {
+            font-size: 0.9rem;
+            line-height: 1.2;
+            margin-top: 0.5rem;
+        }
+
+        .partner-logo .partner-description {
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: normal;
+            margin-top: 0.3rem;
         }
 
         /* Footer */
@@ -917,44 +942,43 @@
         
         <div class="partners-grid">
             <div class="partner-logo">
-                <div>
-                    🏛️<br>
-                    <strong>Ville du Cheylard</strong>
-                </div>
+                <img src="logo-ville-cheylard.png" alt="Logo Ville du Cheylard" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none;">🏛️</div>
+                <div class="partner-name">Ville du Cheylard</div>
             </div>
+            
             <div class="partner-logo">
-                <div>
-                    🎲<br>
-                    <strong>Eyr'jeux</strong><br>
-                    <small>(Boutique-Réductions membres)</small>
-                </div>
+                <img src="logo-eyrjeux.png" alt="Logo Eyr'jeux" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none;">🎲</div>
+                <div class="partner-name">Eyr'jeux</div>
+                <div class="partner-description">Boutique - Réductions membres</div>
             </div>
+            
             <div class="partner-logo">
-                <div>
-                    🎭<br>
-                    <strong>Ardé'jeux</strong><br>
-                    <small>(Jeux géants)</small>
-                </div>
+                <img src="logo-ardejeux.png" alt="Logo Ardé'jeux" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none;">🎭</div>
+                <div class="partner-name">Ardé'jeux</div>
+                <div class="partner-description">Jeux géants</div>
             </div>
+            
             <div class="partner-logo">
-                <div>
-                    🔍<br>
-                    <strong>Chasseurs de Mystères</strong><br>
-                    <small>(Jeux de piste)</small>
-                </div>
+                <img src="logo-chasseurs-mysteres.png" alt="Logo Chasseurs de Mystères" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none;">🔍</div>
+                <div class="partner-name">Chasseurs de Mystères</div>
+                <div class="partner-description">Jeux de piste</div>
             </div>
+            
             <div class="partner-logo">
-                <div>
-                    🎭🔍<br>
-                    <strong>Les jeux du K'dor</strong><br>
-                    <small>(Jeux géants et Escape-Game)</small>
-                </div>
+                <img src="logo-jeux-kdor.png" alt="Logo Les jeux du K'dor" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none;">🎭🔍</div>
+                <div class="partner-name">Les jeux du K'dor</div>
+                <div class="partner-description">Jeux géants et Escape-Game</div>
             </div>
+            
             <div class="partner-logo">
-                <div>
-                    🏦<br>
-                    <strong>Crédit Agricole</strong>
-                </div>
+                <img src="logo-credit-agricole.png" alt="Logo Crédit Agricole" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none;">🏦</div>
+                <div class="partner-name">Crédit Agricole</div>
             </div>
         </div>
     </section>
